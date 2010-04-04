@@ -1,9 +1,9 @@
 NAME
     Dist::Zilla::PluginBundle::MARCEL - build and release a distribution
-    like MARCEL
+    like me
 
 VERSION
-    version 1.100690
+    version 1.100950
 
 SYNOPSIS
     In your dist.ini:
@@ -20,11 +20,23 @@ DESCRIPTION
         [AutoVersion]
 
         ; -- fetch & generate files
-        [AllFiles]
+        [GatherDir]
         [CompileTests]
         [CriticTests]
         [MetaTests]
-        [PodTests]
+        [PodCoverageTests]
+        [PodSyntaxTests]
+        [PodSpellingTests]
+        [KwaliteeTests]
+        [PortabilityTests]
+        [SynopsisTests]
+        [MinimumVersionTests]
+        [HasVersionTests]
+        [CheckChangesTests]
+        [DistManifestTests]
+        [UnusedVarsTests]
+        [InlineFilesMARCEL]
+        [ReportVersions]
 
         ; -- remove some files
         [PruneCruft]
@@ -35,6 +47,8 @@ DESCRIPTION
 
         ; -- gather metadata
         [Repository]
+        [Bugtracker]
+        [Homepage]
 
         ; -- munge files
         [ExtraTests]
@@ -43,7 +57,8 @@ DESCRIPTION
         [PodWeaver]
 
         ; -- dynamic meta-information
-        [InstallDirs]
+        [ExecDir]
+        [ShareDir]
         [MetaProvides::Package]
 
         ; -- generate meta files
@@ -52,6 +67,7 @@ DESCRIPTION
         [MetaYAML]
         [MetaJSON]
         [ReadmeFromPod]
+        [InstallGuide]
         [Manifest] ; should come last
 
         ; -- release
@@ -81,6 +97,24 @@ FUNCTIONS
 INSTALLATION
     See perlmodinstall for information and options on installing Perl
     modules.
+
+BUGS AND LIMITATIONS
+    No bugs have been reported.
+
+    Please report any bugs or feature requests through the web interface at
+    <http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundl
+    e-MARCEL>.
+
+AVAILABILITY
+    The latest version of this module is available from the Comprehensive
+    Perl Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a
+    CPAN site near you, or see
+    <http://search.cpan.org/dist/Dist-Zilla-PluginBundle-MARCEL/>.
+
+    The development version lives at
+    <http://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL/>. Instead of
+    sending patches, please fork this project using the standard git and
+    github infrastructure.
 
 AUTHORS
       Marcel Gruenauer <marcel@cpan.org>

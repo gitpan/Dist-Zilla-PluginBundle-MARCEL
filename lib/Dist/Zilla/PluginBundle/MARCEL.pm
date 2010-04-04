@@ -3,22 +3,32 @@ use strict;
 use warnings;
 
 package Dist::Zilla::PluginBundle::MARCEL;
-our $VERSION = '1.100690';
-# ABSTRACT: build and release a distribution like MARCEL
+BEGIN {
+  $Dist::Zilla::PluginBundle::MARCEL::VERSION = '1.100950';
+}
 
+# ABSTRACT: build and release a distribution like me
 use Class::MOP;
 use Moose;
 use Moose::Autobox;
 
 # plugins used
-use Dist::Zilla::Plugin::AllFiles;
 use Dist::Zilla::Plugin::AutoPrereq;
 use Dist::Zilla::Plugin::AutoVersion;
+use Dist::Zilla::Plugin::Bugtracker;
 use Dist::Zilla::Plugin::CheckChangeLog;
+use Dist::Zilla::Plugin::CheckChangesTests;
 use Dist::Zilla::Plugin::CompileTests 1.100220;
 use Dist::Zilla::Plugin::CriticTests;
+use Dist::Zilla::Plugin::DistManifestTests;
 use Dist::Zilla::Plugin::ExtraTests;
-use Dist::Zilla::Plugin::InstallDirs;
+use Dist::Zilla::Plugin::GatherDir;
+use Dist::Zilla::Plugin::HasVersionTests;
+use Dist::Zilla::Plugin::Homepage;
+use Dist::Zilla::Plugin::ExecDir;
+use Dist::Zilla::Plugin::InstallGuide;
+use Dist::Zilla::Plugin::InlineFilesMARCEL;
+use Dist::Zilla::Plugin::KwaliteeTests;
 use Dist::Zilla::Plugin::License;
 use Dist::Zilla::Plugin::Manifest;
 use Dist::Zilla::Plugin::ManifestSkip;
@@ -27,60 +37,83 @@ use Dist::Zilla::Plugin::MetaYAML;
 use Dist::Zilla::Plugin::MetaJSON;
 use Dist::Zilla::Plugin::MetaTests;
 use Dist::Zilla::Plugin::MakeMaker;
+use Dist::Zilla::Plugin::MinimumVersionTests;
 use Dist::Zilla::Plugin::NextRelease;
 use Dist::Zilla::Plugin::PkgVersion;
-use Dist::Zilla::Plugin::PodTests;
+use Dist::Zilla::Plugin::PodCoverageTests;
+use Dist::Zilla::Plugin::PodSyntaxTests;
+use Dist::Zilla::Plugin::PodSpellingTests;
 use Dist::Zilla::Plugin::PodWeaver;
+use Dist::Zilla::Plugin::PortabilityTests;
 use Dist::Zilla::Plugin::PruneCruft;
 use Dist::Zilla::Plugin::ReadmeFromPod;
+use Dist::Zilla::Plugin::ReportVersions;
 use Dist::Zilla::Plugin::Repository;
+use Dist::Zilla::Plugin::ShareDir;
+use Dist::Zilla::Plugin::SynopsisTests;
 use Dist::Zilla::Plugin::TaskWeaver;
+use Dist::Zilla::Plugin::UnusedVarsTests;
 use Dist::Zilla::Plugin::UploadToCPAN;
 use Dist::Zilla::PluginBundle::Git;
-
 with 'Dist::Zilla::Role::PluginBundle';
 
 sub bundle_config {
     my ($self, $section) = @_;
-    my $class = ref($self) || $self;
-    my $arg   = $section->{payload};
+    # my $class = ref($self) || $self;
+    my $arg = $section->{payload};
 
     # params for AutoVersion
-    my $major_version  = defined $arg->{major_version} ? $arg->{major_version} : 1;
+    my $major_version =
+      defined $arg->{major_version} ? $arg->{major_version} : 1;
     my $version_format =
-          q<{{ $major }}.{{ cldr('yyDDD') }}>
-        . sprintf('%01u', ($ENV{N} || 0))
-        . ($ENV{DEV} ? (sprintf '_%03u', $ENV{DEV}) : '');
+        q<{{ $major }}.{{ cldr('yyDDD') }}>
+      . sprintf('%01u', ($ENV{N} || 0))
+      . ($ENV{DEV} ? (sprintf '_%03u', $ENV{DEV}) : '');
 
     # params for autoprereq
-    my $prereq_params = defined $arg->{skip_prereq}
-        ? { skip => $arg->{skip_prereq} }
-        : {};
+    my $prereq_params =
+      defined $arg->{skip_prereq}
+      ? { skip => $arg->{skip_prereq} }
+      : {};
 
     # params for compiletests
-    my $compile_params = defined $arg->{fake_home}
-        ? { fake_home => $arg->{fake_home} }
-        : {};
+    my $compile_params =
+      defined $arg->{fake_home}
+      ? { fake_home => $arg->{fake_home} }
+      : {};
 
     # params for pod weaver
     $arg->{weaver} ||= 'pod';
 
     # long list of plugins
     my @wanted = (
+
         # -- static meta-information
         [   AutoVersion => {
                 major     => $major_version,
                 format    => $version_format,
-                time_zone => 'Europe/Paris',
+                time_zone => 'Europe/Vienna',
             }
         ],
 
         # -- fetch & generate files
-        [ AllFiles     => {} ],
-        [ CompileTests => $compile_params ],
-        [ CriticTests  => {} ],
-        [ MetaTests    => {} ],
-        [ PodTests     => {} ],
+        [ GatherDir           => {} ],
+        [ CompileTests        => $compile_params ],
+        [ CriticTests         => {} ],
+        [ MetaTests           => {} ],
+        [ PodCoverageTests    => {} ],
+        [ PodSyntaxTests      => {} ],
+        [ PodSpellingTests    => {} ],
+        [ KwaliteeTests       => {} ],
+        [ PortabilityTests    => {} ],
+        [ SynopsisTests       => {} ],
+        [ MinimumVersionTests => {} ],
+        [ HasVersionTests     => {} ],
+        [ CheckChangesTests   => {} ],
+        [ DistManifestTests   => {} ],
+        [ UnusedVarsTests     => {} ],
+        [ InlineFilesMARCEL   => {} ],
+        [ ReportVersions      => {} ],
 
         # -- remove some files
         [ PruneCruft   => {} ],
@@ -91,15 +124,22 @@ sub bundle_config {
 
         # -- gather metadata
         [ Repository => {} ],
+        [ Bugtracker => {} ],
+        [ Homepage   => {} ],
 
         # -- munge files
         [ ExtraTests  => {} ],
         [ NextRelease => {} ],
         [ PkgVersion  => {} ],
-        [ ( $arg->{weaver} eq 'task' ? 'TaskWeaver' : 'PodWeaver' ) => {} ],
+
+        (   $arg->{weaver} eq 'task'
+            ? [ 'TaskWeaver' => {} ]
+            : [ 'PodWeaver' => { config_plugin => '@MARCEL' } ]
+        ),
 
         # -- dynamic meta-information
-        [ InstallDirs             => {} ],
+        [ ExecDir                 => {} ],
+        [ ShareDir                => {} ],
         [ 'MetaProvides::Package' => {} ],
 
         # -- generate meta files
@@ -108,12 +148,14 @@ sub bundle_config {
         [ MetaYAML      => {} ],
         [ MetaJSON      => {} ],
         [ ReadmeFromPod => {} ],
-        [ Manifest      => {} ], # should come last
+        [ InstallGuide  => {} ],
+        [ Manifest      => {} ],    # should come last
 
         # -- release
         [ CheckChangeLog => {} ],
+
         #[ @Git],
-        [ UploadToCPAN   => {} ],
+        [ UploadToCPAN => {} ],
     );
 
     # create list of plugins
@@ -121,37 +163,39 @@ sub bundle_config {
     for my $wanted (@wanted) {
         my ($name, $arg) = @$wanted;
         my $class = "Dist::Zilla::Plugin::$name";
-        Class::MOP::load_class($class); # make sure plugin exists
+        Class::MOP::load_class($class);    # make sure plugin exists
         push @plugins, [ "$section->{name}/$name" => $class => $arg ];
     }
 
     # add git plugins
-    my @gitplugins = Dist::Zilla::PluginBundle::Git->bundle_config( {
-        name    => "$section->{name}/Git",
-        payload => { },
-    } );
+    my @gitplugins = Dist::Zilla::PluginBundle::Git->bundle_config(
+        {   name    => "$section->{name}/Git",
+            payload => {},
+        }
+    );
     push @plugins, @gitplugins;
-
     return @plugins;
 }
-
-
 __PACKAGE__->meta->make_immutable;
 no Moose;
 1;
 
 
-
 __END__
 =pod
 
+=for test_synopsis 1;
+__END__
+
+=for stopwords AutoPrereq AutoVersion CompileTests PodWeaver TaskWeaver
+
 =head1 NAME
 
-Dist::Zilla::PluginBundle::MARCEL - build and release a distribution like MARCEL
+Dist::Zilla::PluginBundle::MARCEL - build and release a distribution like me
 
 =head1 VERSION
 
-version 1.100690
+version 1.100950
 
 =head1 SYNOPSIS
 
@@ -170,11 +214,23 @@ equivalent to:
     [AutoVersion]
 
     ; -- fetch & generate files
-    [AllFiles]
+    [GatherDir]
     [CompileTests]
     [CriticTests]
     [MetaTests]
-    [PodTests]
+    [PodCoverageTests]
+    [PodSyntaxTests]
+    [PodSpellingTests]
+    [KwaliteeTests]
+    [PortabilityTests]
+    [SynopsisTests]
+    [MinimumVersionTests]
+    [HasVersionTests]
+    [CheckChangesTests]
+    [DistManifestTests]
+    [UnusedVarsTests]
+    [InlineFilesMARCEL]
+    [ReportVersions]
 
     ; -- remove some files
     [PruneCruft]
@@ -185,6 +241,8 @@ equivalent to:
 
     ; -- gather metadata
     [Repository]
+    [Bugtracker]
+    [Homepage]
 
     ; -- munge files
     [ExtraTests]
@@ -193,7 +251,8 @@ equivalent to:
     [PodWeaver]
 
     ; -- dynamic meta-information
-    [InstallDirs]
+    [ExecDir]
+    [ShareDir]
     [MetaProvides::Package]
 
     ; -- generate meta files
@@ -202,6 +261,7 @@ equivalent to:
     [MetaYAML]
     [MetaJSON]
     [ReadmeFromPod]
+    [InstallGuide]
     [Manifest] ; should come last
 
     ; -- release
@@ -239,6 +299,25 @@ individual plugins as described above.
 =head1 INSTALLATION
 
 See perlmodinstall for information and options on installing Perl modules.
+
+=head1 BUGS AND LIMITATIONS
+
+No bugs have been reported.
+
+Please report any bugs or feature requests through the web interface at
+L<http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-MARCEL>.
+
+=head1 AVAILABILITY
+
+The latest version of this module is available from the Comprehensive Perl
+Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
+site near you, or see
+L<http://search.cpan.org/dist/Dist-Zilla-PluginBundle-MARCEL/>.
+
+The development version lives at
+L<http://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL/>.
+Instead of sending patches, please fork this project using the standard git
+and github infrastructure.
 
 =head1 AUTHORS
 
