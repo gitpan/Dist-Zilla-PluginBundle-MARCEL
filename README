@@ -3,7 +3,7 @@ NAME
     like me
 
 VERSION
-    version 1.100950
+    version 1.100980
 
 SYNOPSIS
     In your dist.ini:
@@ -72,7 +72,9 @@ DESCRIPTION
 
         ; -- release
         [CheckChangeLog]
-        [@Git]
+        [Git::Check]
+        [Git::Commit]
+        [Git::Tag]
         [UploadToCPAN]
 
     The following options are accepted:
@@ -110,11 +112,6 @@ AVAILABILITY
     Perl Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a
     CPAN site near you, or see
     <http://search.cpan.org/dist/Dist-Zilla-PluginBundle-MARCEL/>.
-
-    The development version lives at
-    <http://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL/>. Instead of
-    sending patches, please fork this project using the standard git and
-    github infrastructure.
 
 AUTHORS
       Marcel Gruenauer <marcel@cpan.org>

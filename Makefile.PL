@@ -19,7 +19,7 @@ my %WriteMakefileArgs = (
                                                },
                        'AUTHOR' => 'Marcel Gruenauer <marcel@cpan.org>, Jerome Quelin <jquelin@cpan.org>',
                        'BUILD_REQUIRES' => {
-                                             'Test::More' => '0.88',
+                                             'Test::More' => '0.94',
                                              'Scalar::Util' => '0',
                                              'English' => '0',
                                              'File::Find' => '0',
@@ -28,7 +28,7 @@ my %WriteMakefileArgs = (
                                            },
                        'ABSTRACT' => 'build and release a distribution like me',
                        'EXE_FILES' => [],
-                       'VERSION' => '1.100950',
+                       'VERSION' => '1.100980',
                        'PREREQ_PM' => {
                                         'Dist::Zilla::Plugin::ReportVersions' => '0',
                                         'Dist::Zilla::Plugin::MinimumVersionTests' => '0',

@@ -4,7 +4,7 @@ use warnings;
 
 package Dist::Zilla::PluginBundle::MARCEL;
 BEGIN {
-  $Dist::Zilla::PluginBundle::MARCEL::VERSION = '1.100950';
+  $Dist::Zilla::PluginBundle::MARCEL::VERSION = '1.100980';
 }
 
 # ABSTRACT: build and release a distribution like me
@@ -155,7 +155,10 @@ sub bundle_config {
         [ CheckChangeLog => {} ],
 
         #[ @Git],
-        [ UploadToCPAN => {} ],
+        [ 'Git::Check'  => {} ],
+        [ 'Git::Commit' => {} ],
+        [ 'Git::Tag'    => {} ],
+        [ UploadToCPAN  => {} ],
     );
 
     # create list of plugins
@@ -168,12 +171,13 @@ sub bundle_config {
     }
 
     # add git plugins
-    my @gitplugins = Dist::Zilla::PluginBundle::Git->bundle_config(
-        {   name    => "$section->{name}/Git",
-            payload => {},
-        }
-    );
-    push @plugins, @gitplugins;
+    # my @gitplugins = Dist::Zilla::PluginBundle::Git->bundle_config(
+    #     {   name    => "$section->{name}/Git",
+    #         payload => {},
+    #     }
+    # );
+    # push @plugins, @gitplugins;
+
     return @plugins;
 }
 __PACKAGE__->meta->make_immutable;
@@ -195,7 +199,7 @@ Dist::Zilla::PluginBundle::MARCEL - build and release a distribution like me
 
 =head1 VERSION
 
-version 1.100950
+version 1.100980
 
 =head1 SYNOPSIS
 
@@ -266,7 +270,9 @@ equivalent to:
 
     ; -- release
     [CheckChangeLog]
-    [@Git]
+    [Git::Check]
+    [Git::Commit]
+    [Git::Tag]
     [UploadToCPAN]
 
 The following options are accepted:
@@ -313,11 +319,6 @@ The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
 site near you, or see
 L<http://search.cpan.org/dist/Dist-Zilla-PluginBundle-MARCEL/>.
-
-The development version lives at
-L<http://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL/>.
-Instead of sending patches, please fork this project using the standard git
-and github infrastructure.
 
 =head1 AUTHORS
 
