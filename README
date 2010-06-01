@@ -1,9 +1,9 @@
 NAME
-    Dist::Zilla::PluginBundle::MARCEL - build and release a distribution
-    like me
+    Dist::Zilla::PluginBundle::MARCEL - Build and release a distribution
+    like MARCEL
 
 VERSION
-    version 1.100980
+    version 1.101520
 
 SYNOPSIS
     In your dist.ini:
@@ -72,9 +72,7 @@ DESCRIPTION
 
         ; -- release
         [CheckChangeLog]
-        [Git::Check]
-        [Git::Commit]
-        [Git::Tag]
+        [@Git]
         [UploadToCPAN]
 
     The following options are accepted:
@@ -104,14 +102,18 @@ BUGS AND LIMITATIONS
     No bugs have been reported.
 
     Please report any bugs or feature requests through the web interface at
-    <http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundl
-    e-MARCEL>.
+    <http://rt.cpan.org>.
 
 AVAILABILITY
     The latest version of this module is available from the Comprehensive
     Perl Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a
     CPAN site near you, or see
     <http://search.cpan.org/dist/Dist-Zilla-PluginBundle-MARCEL/>.
+
+    The development version lives at
+    <http://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL/>. Instead of
+    sending patches, please fork this project using the standard git and
+    github infrastructure.
 
 AUTHORS
       Marcel Gruenauer <marcel@cpan.org>

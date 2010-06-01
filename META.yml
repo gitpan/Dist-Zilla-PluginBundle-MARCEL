@@ -1,5 +1,5 @@
 ---
-abstract: 'build and release a distribution like me'
+abstract: 'Build and release a distribution like MARCEL'
 author:
   - 'Marcel Gruenauer <marcel@cpan.org>'
   - 'Jerome Quelin <jquelin@cpan.org>'
@@ -12,7 +12,8 @@ build_requires:
   Test::More: 0.94
 configure_requires:
   ExtUtils::MakeMaker: 6.31
-generated_by: 'Dist::Zilla version 2.100960'
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 3.101461, CPAN::Meta::Converter version 2.101461'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -21,11 +22,10 @@ name: Dist-Zilla-PluginBundle-MARCEL
 provides:
   Dist::Zilla::Plugin::InlineFilesMARCEL:
     file: lib/Dist/Zilla/Plugin/InlineFilesMARCEL.pm
-    version: 1.100980
+    version: 1.101520
   Dist::Zilla::PluginBundle::MARCEL:
     file: lib/Dist/Zilla/PluginBundle/MARCEL.pm
-    version: 1.100980
-recommends: {}
+    version: 1.101520
 requires:
   Class::MOP: 0
   Dist::Zilla::Plugin::AutoPrereq: 0
@@ -78,5 +78,5 @@ requires:
 resources:
   bugtracker: http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-MARCEL
   homepage: http://search.cpan.org/dist/Dist-Zilla-PluginBundle-MARCEL/
-  repository: origin
-version: 1.100980
+  repository: http://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL
+version: 1.101520

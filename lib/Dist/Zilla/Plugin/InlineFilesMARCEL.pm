@@ -4,7 +4,7 @@ use warnings;
 
 package Dist::Zilla::Plugin::InlineFilesMARCEL;
 BEGIN {
-  $Dist::Zilla::Plugin::InlineFilesMARCEL::VERSION = '1.100980';
+  $Dist::Zilla::Plugin::InlineFilesMARCEL::VERSION = '1.101520';
 }
 # ABSTRACT: Write static files that I always use
 use Moose;
@@ -26,7 +26,7 @@ Dist::Zilla::Plugin::InlineFilesMARCEL - Write static files that I always use
 
 =head1 VERSION
 
-version 1.100980
+version 1.101520
 
 =head1 SYNOPSIS
 
@@ -57,7 +57,7 @@ See perlmodinstall for information and options on installing Perl modules.
 No bugs have been reported.
 
 Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-MARCEL>.
+L<http://rt.cpan.org>.
 
 =head1 AVAILABILITY
 
@@ -65,6 +65,11 @@ The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
 site near you, or see
 L<http://search.cpan.org/dist/Dist-Zilla-PluginBundle-MARCEL/>.
+
+The development version lives at
+L<http://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL/>.
+Instead of sending patches, please fork this project using the standard git
+and github infrastructure.
 
 =head1 AUTHORS
 
