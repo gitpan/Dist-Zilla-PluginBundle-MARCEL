@@ -4,7 +4,7 @@ use warnings;
 
 package Dist::Zilla::PluginBundle::MARCEL;
 BEGIN {
-  $Dist::Zilla::PluginBundle::MARCEL::VERSION = '1.101520';
+  $Dist::Zilla::PluginBundle::MARCEL::VERSION = '1.101600';
 }
 
 # ABSTRACT: Build and release a distribution like MARCEL
@@ -46,6 +46,7 @@ use Dist::Zilla::Plugin::PodSpellingTests;
 use Dist::Zilla::Plugin::PodWeaver;
 use Dist::Zilla::Plugin::PortabilityTests;
 use Dist::Zilla::Plugin::PruneCruft;
+use Dist::Zilla::Plugin::PruneFiles;
 use Dist::Zilla::Plugin::ReadmeFromPod;
 use Dist::Zilla::Plugin::ReportVersions;
 use Dist::Zilla::Plugin::Repository;
@@ -117,6 +118,7 @@ sub bundle_config {
 
         # -- remove some files
         [ PruneCruft   => {} ],
+        [ PruneFiles   => { filenames => [ qw(dist.ini) ] } ],
         [ ManifestSkip => {} ],
 
         # -- get prereqs
@@ -196,7 +198,7 @@ Dist::Zilla::PluginBundle::MARCEL - Build and release a distribution like MARCEL
 
 =head1 VERSION
 
-version 1.101520
+version 1.101600
 
 =head1 SYNOPSIS
 
@@ -235,6 +237,9 @@ equivalent to:
 
     ; -- remove some files
     [PruneCruft]
+    [PruneFiles]
+    filenames = dist.ini
+
     [ManifestSkip]
 
     ; -- get prereqs

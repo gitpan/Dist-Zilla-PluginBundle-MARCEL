@@ -3,7 +3,7 @@ NAME
     like MARCEL
 
 VERSION
-    version 1.101520
+    version 1.101600
 
 SYNOPSIS
     In your dist.ini:
@@ -40,6 +40,9 @@ DESCRIPTION
 
         ; -- remove some files
         [PruneCruft]
+        [PruneFiles]
+        filenames = dist.ini
+
         [ManifestSkip]
 
         ; -- get prereqs

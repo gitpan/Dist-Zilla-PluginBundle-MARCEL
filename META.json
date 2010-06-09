@@ -5,11 +5,13 @@
       "Jerome Quelin <jquelin@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 3.101461",
-   "license" : "perl_5",
+   "generated_by" : "Dist::Zilla version 4.101582, CPAN::Meta::Converter version 2.101591",
+   "license" : [
+      "perl_5"
+   ],
    "meta-spec" : {
-      "url" : "http://github.com/dagolden/cpan-meta/",
-      "version" : 2
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
    },
    "name" : "Dist-Zilla-PluginBundle-MARCEL",
    "prereqs" : {
@@ -20,63 +22,64 @@
       },
       "runtime" : {
          "requires" : {
-            "Class::MOP" : "0",
-            "Dist::Zilla::Plugin::AutoPrereq" : "0",
-            "Dist::Zilla::Plugin::AutoVersion" : "0",
-            "Dist::Zilla::Plugin::Bugtracker" : "0",
-            "Dist::Zilla::Plugin::CheckChangeLog" : "0",
-            "Dist::Zilla::Plugin::CheckChangesTests" : "0",
+            "Class::MOP" : 0,
+            "Dist::Zilla::Plugin::AutoPrereq" : 0,
+            "Dist::Zilla::Plugin::AutoVersion" : 0,
+            "Dist::Zilla::Plugin::Bugtracker" : 0,
+            "Dist::Zilla::Plugin::CheckChangeLog" : 0,
+            "Dist::Zilla::Plugin::CheckChangesTests" : 0,
             "Dist::Zilla::Plugin::CompileTests" : "1.100220",
-            "Dist::Zilla::Plugin::CriticTests" : "0",
-            "Dist::Zilla::Plugin::DistManifestTests" : "0",
-            "Dist::Zilla::Plugin::ExecDir" : "0",
-            "Dist::Zilla::Plugin::ExtraTests" : "0",
-            "Dist::Zilla::Plugin::GatherDir" : "0",
-            "Dist::Zilla::Plugin::HasVersionTests" : "0",
-            "Dist::Zilla::Plugin::Homepage" : "0",
-            "Dist::Zilla::Plugin::InlineFiles" : "0",
-            "Dist::Zilla::Plugin::InstallGuide" : "0",
-            "Dist::Zilla::Plugin::KwaliteeTests" : "0",
-            "Dist::Zilla::Plugin::License" : "0",
-            "Dist::Zilla::Plugin::MakeMaker" : "0",
-            "Dist::Zilla::Plugin::Manifest" : "0",
-            "Dist::Zilla::Plugin::ManifestSkip" : "0",
-            "Dist::Zilla::Plugin::MetaJSON" : "0",
-            "Dist::Zilla::Plugin::MetaProvides::Package" : "0",
-            "Dist::Zilla::Plugin::MetaTests" : "0",
-            "Dist::Zilla::Plugin::MetaYAML" : "0",
-            "Dist::Zilla::Plugin::MinimumVersionTests" : "0",
-            "Dist::Zilla::Plugin::NextRelease" : "0",
-            "Dist::Zilla::Plugin::PkgVersion" : "0",
-            "Dist::Zilla::Plugin::PodCoverageTests" : "0",
-            "Dist::Zilla::Plugin::PodSpellingTests" : "0",
-            "Dist::Zilla::Plugin::PodSyntaxTests" : "0",
-            "Dist::Zilla::Plugin::PodWeaver" : "0",
-            "Dist::Zilla::Plugin::PortabilityTests" : "0",
-            "Dist::Zilla::Plugin::PruneCruft" : "0",
-            "Dist::Zilla::Plugin::ReadmeFromPod" : "0",
-            "Dist::Zilla::Plugin::ReportVersions" : "0",
-            "Dist::Zilla::Plugin::Repository" : "0",
-            "Dist::Zilla::Plugin::ShareDir" : "0",
-            "Dist::Zilla::Plugin::SynopsisTests" : "0",
-            "Dist::Zilla::Plugin::TaskWeaver" : "0",
-            "Dist::Zilla::Plugin::UnusedVarsTests" : "0",
-            "Dist::Zilla::Plugin::UploadToCPAN" : "0",
-            "Dist::Zilla::PluginBundle::Git" : "0",
-            "Dist::Zilla::Role::PluginBundle" : "0",
-            "Moose" : "0",
-            "Moose::Autobox" : "0",
-            "Test::Synopsis" : "0",
+            "Dist::Zilla::Plugin::CriticTests" : 0,
+            "Dist::Zilla::Plugin::DistManifestTests" : 0,
+            "Dist::Zilla::Plugin::ExecDir" : 0,
+            "Dist::Zilla::Plugin::ExtraTests" : 0,
+            "Dist::Zilla::Plugin::GatherDir" : 0,
+            "Dist::Zilla::Plugin::HasVersionTests" : 0,
+            "Dist::Zilla::Plugin::Homepage" : 0,
+            "Dist::Zilla::Plugin::InlineFiles" : 0,
+            "Dist::Zilla::Plugin::InstallGuide" : 0,
+            "Dist::Zilla::Plugin::KwaliteeTests" : 0,
+            "Dist::Zilla::Plugin::License" : 0,
+            "Dist::Zilla::Plugin::MakeMaker" : 0,
+            "Dist::Zilla::Plugin::Manifest" : 0,
+            "Dist::Zilla::Plugin::ManifestSkip" : 0,
+            "Dist::Zilla::Plugin::MetaJSON" : 0,
+            "Dist::Zilla::Plugin::MetaProvides::Package" : 0,
+            "Dist::Zilla::Plugin::MetaTests" : 0,
+            "Dist::Zilla::Plugin::MetaYAML" : 0,
+            "Dist::Zilla::Plugin::MinimumVersionTests" : 0,
+            "Dist::Zilla::Plugin::NextRelease" : 0,
+            "Dist::Zilla::Plugin::PkgVersion" : 0,
+            "Dist::Zilla::Plugin::PodCoverageTests" : 0,
+            "Dist::Zilla::Plugin::PodSpellingTests" : 0,
+            "Dist::Zilla::Plugin::PodSyntaxTests" : 0,
+            "Dist::Zilla::Plugin::PodWeaver" : 0,
+            "Dist::Zilla::Plugin::PortabilityTests" : 0,
+            "Dist::Zilla::Plugin::PruneCruft" : 0,
+            "Dist::Zilla::Plugin::PruneFiles" : 0,
+            "Dist::Zilla::Plugin::ReadmeFromPod" : 0,
+            "Dist::Zilla::Plugin::ReportVersions" : 0,
+            "Dist::Zilla::Plugin::Repository" : 0,
+            "Dist::Zilla::Plugin::ShareDir" : 0,
+            "Dist::Zilla::Plugin::SynopsisTests" : 0,
+            "Dist::Zilla::Plugin::TaskWeaver" : 0,
+            "Dist::Zilla::Plugin::UnusedVarsTests" : 0,
+            "Dist::Zilla::Plugin::UploadToCPAN" : 0,
+            "Dist::Zilla::PluginBundle::Git" : 0,
+            "Dist::Zilla::Role::PluginBundle" : 0,
+            "Moose" : 0,
+            "Moose::Autobox" : 0,
+            "Test::Synopsis" : 0,
             "perl" : "5.008"
          }
       },
       "test" : {
          "requires" : {
-            "Carp" : "0",
-            "English" : "0",
-            "File::Find" : "0",
-            "File::Temp" : "0",
-            "Scalar::Util" : "0",
+            "Carp" : 0,
+            "English" : 0,
+            "File::Find" : 0,
+            "File::Temp" : 0,
+            "Scalar::Util" : 0,
             "Test::More" : "0.94"
          }
       }
@@ -84,13 +87,14 @@
    "provides" : {
       "Dist::Zilla::Plugin::InlineFilesMARCEL" : {
          "file" : "lib/Dist/Zilla/Plugin/InlineFilesMARCEL.pm",
-         "version" : "1.101520"
+         "version" : "1.101600"
       },
       "Dist::Zilla::PluginBundle::MARCEL" : {
          "file" : "lib/Dist/Zilla/PluginBundle/MARCEL.pm",
-         "version" : "1.101520"
+         "version" : "1.101600"
       }
    },
+   "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
          "mailto" : "bug-dist-zilla-pluginbundle-marcel at rt.cpan.org",
@@ -101,6 +105,6 @@
          "url" : "http://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL"
       }
    },
-   "version" : "1.101520"
+   "version" : "1.101600"
 }
 

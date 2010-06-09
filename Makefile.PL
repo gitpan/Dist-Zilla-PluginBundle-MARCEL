@@ -61,6 +61,7 @@ my %WriteMakefileArgs = (
     'Dist::Zilla::Plugin::PodWeaver' => '0',
     'Dist::Zilla::Plugin::PortabilityTests' => '0',
     'Dist::Zilla::Plugin::PruneCruft' => '0',
+    'Dist::Zilla::Plugin::PruneFiles' => '0',
     'Dist::Zilla::Plugin::ReadmeFromPod' => '0',
     'Dist::Zilla::Plugin::ReportVersions' => '0',
     'Dist::Zilla::Plugin::Repository' => '0',
@@ -75,7 +76,7 @@ my %WriteMakefileArgs = (
     'Moose::Autobox' => '0',
     'Test::Synopsis' => '0'
   },
-  'VERSION' => '1.101520',
+  'VERSION' => '1.101600',
   'test' => {
     'TESTS' => 't/*.t'
   }
@@ -84,10 +85,10 @@ my %WriteMakefileArgs = (
 
 unless ( eval { ExtUtils::MakeMaker->VERSION(6.56) } ) {
   my $br = delete $WriteMakefileArgs{BUILD_REQUIRES};
-  my $pp = $WriteMakefileArgs{PREREQ_PM}; 
+  my $pp = $WriteMakefileArgs{PREREQ_PM};
   for my $mod ( keys %$br ) {
     if ( exists $pp->{$mod} ) {
-      $pp->{$mod} = $br->{$mod} if $br->{$mod} > $pp->{$mod}; 
+      $pp->{$mod} = $br->{$mod} if $br->{$mod} > $pp->{$mod};
     }
     else {
       $pp->{$mod} = $br->{$mod};
