@@ -3,7 +3,7 @@ NAME
     like MARCEL
 
 VERSION
-    version 1.101600
+    version 1.101700
 
 SYNOPSIS
     In your dist.ini:
@@ -35,6 +35,7 @@ DESCRIPTION
         [CheckChangesTests]
         [DistManifestTests]
         [UnusedVarsTests]
+        [NoTabsTests]
         [InlineFilesMARCEL]
         [ReportVersions]
 

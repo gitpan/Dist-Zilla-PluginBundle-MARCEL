@@ -54,6 +54,7 @@ my %WriteMakefileArgs = (
     'Dist::Zilla::Plugin::MetaYAML' => '0',
     'Dist::Zilla::Plugin::MinimumVersionTests' => '0',
     'Dist::Zilla::Plugin::NextRelease' => '0',
+    'Dist::Zilla::Plugin::NoTabsTests' => '0',
     'Dist::Zilla::Plugin::PkgVersion' => '0',
     'Dist::Zilla::Plugin::PodCoverageTests' => '0',
     'Dist::Zilla::Plugin::PodSpellingTests' => '0',
@@ -76,7 +77,7 @@ my %WriteMakefileArgs = (
     'Moose::Autobox' => '0',
     'Test::Synopsis' => '0'
   },
-  'VERSION' => '1.101600',
+  'VERSION' => '1.101700',
   'test' => {
     'TESTS' => 't/*.t'
   }

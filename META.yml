@@ -22,10 +22,10 @@ name: Dist-Zilla-PluginBundle-MARCEL
 provides:
   Dist::Zilla::Plugin::InlineFilesMARCEL:
     file: lib/Dist/Zilla/Plugin/InlineFilesMARCEL.pm
-    version: 1.101600
+    version: 1.101700
   Dist::Zilla::PluginBundle::MARCEL:
     file: lib/Dist/Zilla/PluginBundle/MARCEL.pm
-    version: 1.101600
+    version: 1.101700
 requires:
   Class::MOP: 0
   Dist::Zilla::Plugin::AutoPrereq: 0
@@ -54,6 +54,7 @@ requires:
   Dist::Zilla::Plugin::MetaYAML: 0
   Dist::Zilla::Plugin::MinimumVersionTests: 0
   Dist::Zilla::Plugin::NextRelease: 0
+  Dist::Zilla::Plugin::NoTabsTests: 0
   Dist::Zilla::Plugin::PkgVersion: 0
   Dist::Zilla::Plugin::PodCoverageTests: 0
   Dist::Zilla::Plugin::PodSpellingTests: 0
@@ -80,4 +81,4 @@ resources:
   bugtracker: http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-MARCEL
   homepage: http://search.cpan.org/dist/Dist-Zilla-PluginBundle-MARCEL/
   repository: http://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL
-version: 1.101600
+version: 1.101700

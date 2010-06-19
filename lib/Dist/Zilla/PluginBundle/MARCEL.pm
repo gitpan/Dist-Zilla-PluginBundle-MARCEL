@@ -4,7 +4,7 @@ use warnings;
 
 package Dist::Zilla::PluginBundle::MARCEL;
 BEGIN {
-  $Dist::Zilla::PluginBundle::MARCEL::VERSION = '1.101600';
+  $Dist::Zilla::PluginBundle::MARCEL::VERSION = '1.101700';
 }
 
 # ABSTRACT: Build and release a distribution like MARCEL
@@ -39,6 +39,7 @@ use Dist::Zilla::Plugin::MetaTests;
 use Dist::Zilla::Plugin::MakeMaker;
 use Dist::Zilla::Plugin::MinimumVersionTests;
 use Dist::Zilla::Plugin::NextRelease;
+use Dist::Zilla::Plugin::NoTabsTests;
 use Dist::Zilla::Plugin::PkgVersion;
 use Dist::Zilla::Plugin::PodCoverageTests;
 use Dist::Zilla::Plugin::PodSyntaxTests;
@@ -113,6 +114,7 @@ sub bundle_config {
         [ CheckChangesTests   => {} ],
         [ DistManifestTests   => {} ],
         [ UnusedVarsTests     => {} ],
+        [ NoTabsTests         => {} ],
         [ InlineFilesMARCEL   => {} ],
         [ ReportVersions      => {} ],
 
@@ -198,7 +200,7 @@ Dist::Zilla::PluginBundle::MARCEL - Build and release a distribution like MARCEL
 
 =head1 VERSION
 
-version 1.101600
+version 1.101700
 
 =head1 SYNOPSIS
 
@@ -232,6 +234,7 @@ equivalent to:
     [CheckChangesTests]
     [DistManifestTests]
     [UnusedVarsTests]
+    [NoTabsTests]
     [InlineFilesMARCEL]
     [ReportVersions]
 

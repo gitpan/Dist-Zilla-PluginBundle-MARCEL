@@ -49,6 +49,7 @@
             "Dist::Zilla::Plugin::MetaYAML" : 0,
             "Dist::Zilla::Plugin::MinimumVersionTests" : 0,
             "Dist::Zilla::Plugin::NextRelease" : 0,
+            "Dist::Zilla::Plugin::NoTabsTests" : 0,
             "Dist::Zilla::Plugin::PkgVersion" : 0,
             "Dist::Zilla::Plugin::PodCoverageTests" : 0,
             "Dist::Zilla::Plugin::PodSpellingTests" : 0,
@@ -87,11 +88,11 @@
    "provides" : {
       "Dist::Zilla::Plugin::InlineFilesMARCEL" : {
          "file" : "lib/Dist/Zilla/Plugin/InlineFilesMARCEL.pm",
-         "version" : "1.101600"
+         "version" : "1.101700"
       },
       "Dist::Zilla::PluginBundle::MARCEL" : {
          "file" : "lib/Dist/Zilla/PluginBundle/MARCEL.pm",
-         "version" : "1.101600"
+         "version" : "1.101700"
       }
    },
    "release_status" : "stable",
@@ -105,6 +106,6 @@
          "url" : "http://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL"
       }
    },
-   "version" : "1.101600"
+   "version" : "1.101700"
 }
 
