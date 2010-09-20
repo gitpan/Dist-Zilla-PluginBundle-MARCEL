@@ -4,7 +4,7 @@ use warnings;
 
 package Dist::Zilla::Plugin::InlineFilesMARCEL;
 BEGIN {
-  $Dist::Zilla::Plugin::InlineFilesMARCEL::VERSION = '1.101700';
+  $Dist::Zilla::Plugin::InlineFilesMARCEL::VERSION = '1.102630';
 }
 # ABSTRACT: Write static files that I always use
 use Moose;
@@ -20,13 +20,18 @@ no Moose;
 
 =pod
 
+=for test_synopsis 1;
+__END__
+
+=for stopwords Quelin
+
 =head1 NAME
 
 Dist::Zilla::Plugin::InlineFilesMARCEL - Write static files that I always use
 
 =head1 VERSION
 
-version 1.101700
+version 1.102630
 
 =head1 SYNOPSIS
 
@@ -45,9 +50,6 @@ following files:
 They contain the settings which I always use in my distributions. This plugin
 is automatically included in the C<@MARCEL> plugin bundle.
 
-=for test_synopsis 1;
-__END__
-
 =head1 INSTALLATION
 
 See perlmodinstall for information and options on installing Perl modules.
@@ -63,18 +65,26 @@ L<http://rt.cpan.org>.
 
 The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
-site near you, or see
-L<http://search.cpan.org/dist/Dist-Zilla-PluginBundle-MARCEL/>.
+site near you, or see L<http://search.cpan.org/dist/Dist-Zilla-PluginBundle-MARCEL/>.
 
-The development version lives at
-L<http://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL/>.
-Instead of sending patches, please fork this project using the standard git
-and github infrastructure.
+The development version lives at L<http://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL>
+and may be cloned from L<git://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL>.
+Instead of sending patches, please fork this project using the standard
+git and github infrastructure.
 
 =head1 AUTHORS
 
-  Marcel Gruenauer <marcel@cpan.org>
-  Jerome Quelin <jquelin@cpan.org>
+=over 4
+
+=item *
+
+Marcel Gruenauer <marcel@cpan.org>
+
+=item *
+
+Jerome Quelin <jquelin@cpan.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 

@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
- BEGIN { require 5.008; } 
+BEGIN { require 5.008; }
 
 use ExtUtils::MakeMaker 6.31;
 
@@ -28,7 +28,7 @@ my %WriteMakefileArgs = (
   'NAME' => 'Dist::Zilla::PluginBundle::MARCEL',
   'PREREQ_PM' => {
     'Class::MOP' => '0',
-    'Dist::Zilla::Plugin::AutoPrereq' => '0',
+    'Dist::Zilla::Plugin::AutoPrereqs' => '0',
     'Dist::Zilla::Plugin::AutoVersion' => '0',
     'Dist::Zilla::Plugin::Bugtracker' => '0',
     'Dist::Zilla::Plugin::CheckChangeLog' => '0',
@@ -75,9 +75,10 @@ my %WriteMakefileArgs = (
     'Dist::Zilla::Role::PluginBundle' => '0',
     'Moose' => '0',
     'Moose::Autobox' => '0',
+    'Pod::Weaver::PluginBundle::MARCEL' => '0',
     'Test::Synopsis' => '0'
   },
-  'VERSION' => '1.101700',
+  'VERSION' => '1.102630',
   'test' => {
     'TESTS' => 't/*.t'
   }

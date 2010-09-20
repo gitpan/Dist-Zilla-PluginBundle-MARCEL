@@ -3,7 +3,7 @@ NAME
     like MARCEL
 
 VERSION
-    version 1.101700
+    version 1.102630
 
 SYNOPSIS
     In your dist.ini:
@@ -59,6 +59,7 @@ DESCRIPTION
         [NextRelease]
         [PkgVersion]
         [PodWeaver]
+        config_plugin = '@MARCEL'
 
         ; -- dynamic meta-information
         [ExecDir]
@@ -115,13 +116,15 @@ AVAILABILITY
     <http://search.cpan.org/dist/Dist-Zilla-PluginBundle-MARCEL/>.
 
     The development version lives at
-    <http://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL/>. Instead of
-    sending patches, please fork this project using the standard git and
-    github infrastructure.
+    <http://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL> and may be
+    cloned from <git://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL>.
+    Instead of sending patches, please fork this project using the standard
+    git and github infrastructure.
 
 AUTHORS
-      Marcel Gruenauer <marcel@cpan.org>
-      Jerome Quelin <jquelin@cpan.org>
+    *   Marcel Gruenauer <marcel@cpan.org>
+
+    *   Jerome Quelin <jquelin@cpan.org>
 
 COPYRIGHT AND LICENSE
     This software is copyright (c) 2010 by Marcel Gruenauer.

@@ -4,7 +4,7 @@ use warnings;
 
 package Dist::Zilla::PluginBundle::MARCEL;
 BEGIN {
-  $Dist::Zilla::PluginBundle::MARCEL::VERSION = '1.101700';
+  $Dist::Zilla::PluginBundle::MARCEL::VERSION = '1.102630';
 }
 
 # ABSTRACT: Build and release a distribution like MARCEL
@@ -13,7 +13,7 @@ use Moose;
 use Moose::Autobox;
 
 # plugins used
-use Dist::Zilla::Plugin::AutoPrereq;
+use Dist::Zilla::Plugin::AutoPrereqs;
 use Dist::Zilla::Plugin::AutoVersion;
 use Dist::Zilla::Plugin::Bugtracker;
 use Dist::Zilla::Plugin::CheckChangeLog;
@@ -57,6 +57,7 @@ use Dist::Zilla::Plugin::TaskWeaver;
 use Dist::Zilla::Plugin::UnusedVarsTests;
 use Dist::Zilla::Plugin::UploadToCPAN;
 use Dist::Zilla::PluginBundle::Git;
+use Pod::Weaver::PluginBundle::MARCEL;
 with 'Dist::Zilla::Role::PluginBundle';
 
 sub bundle_config {
@@ -124,7 +125,7 @@ sub bundle_config {
         [ ManifestSkip => {} ],
 
         # -- get prereqs
-        [ AutoPrereq => $prereq_params ],
+        [ AutoPrereqs => $prereq_params ],
 
         # -- gather metadata
         [ Repository => {} ],
@@ -192,7 +193,7 @@ __END__
 =for test_synopsis 1;
 __END__
 
-=for stopwords AutoPrereq AutoVersion CompileTests PodWeaver TaskWeaver
+=for stopwords AutoPrereq AutoVersion CompileTests PodWeaver TaskWeaver Quelin
 
 =head1 NAME
 
@@ -200,7 +201,7 @@ Dist::Zilla::PluginBundle::MARCEL - Build and release a distribution like MARCEL
 
 =head1 VERSION
 
-version 1.101700
+version 1.102630
 
 =head1 SYNOPSIS
 
@@ -258,6 +259,7 @@ equivalent to:
     [NextRelease]
     [PkgVersion]
     [PodWeaver]
+    config_plugin = '@MARCEL'
 
     ; -- dynamic meta-information
     [ExecDir]
@@ -320,18 +322,26 @@ L<http://rt.cpan.org>.
 
 The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
-site near you, or see
-L<http://search.cpan.org/dist/Dist-Zilla-PluginBundle-MARCEL/>.
+site near you, or see L<http://search.cpan.org/dist/Dist-Zilla-PluginBundle-MARCEL/>.
 
-The development version lives at
-L<http://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL/>.
-Instead of sending patches, please fork this project using the standard git
-and github infrastructure.
+The development version lives at L<http://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL>
+and may be cloned from L<git://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL>.
+Instead of sending patches, please fork this project using the standard
+git and github infrastructure.
 
 =head1 AUTHORS
 
-  Marcel Gruenauer <marcel@cpan.org>
-  Jerome Quelin <jquelin@cpan.org>
+=over 4
+
+=item *
+
+Marcel Gruenauer <marcel@cpan.org>
+
+=item *
+
+Jerome Quelin <jquelin@cpan.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 
