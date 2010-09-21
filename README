@@ -3,7 +3,7 @@ NAME
     like MARCEL
 
 VERSION
-    version 1.102630
+    version 1.102640
 
 SYNOPSIS
     In your dist.ini:
@@ -88,6 +88,9 @@ DESCRIPTION
     *   "weaver" - can be either "pod" (default) or "task", to load
         respectively either PodWeaver or TaskWeaver.
 
+    *   "weaver_finder" - a multi-value argument that overrides the default
+        file finders used by <PodWeaver|Dist::Zilla::Plugin::PodWeaver>.
+
     *   "skip_prereq" - passed as "skip" option to the AutoPrereq plugin if
         set. No default.
 
@@ -95,6 +98,9 @@ DESCRIPTION
         home.
 
 FUNCTIONS
+  mvp_multivalue_args
+    Defines that "weaver_finder" is a multi-value argument.
+
   bundle_config
     Defines the bundle's contents and passes on this bundle's configuration
     to the individual plugins as described above.

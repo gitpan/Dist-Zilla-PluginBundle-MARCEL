@@ -4,7 +4,7 @@ use warnings;
 
 package Dist::Zilla::Plugin::InlineFilesMARCEL;
 BEGIN {
-  $Dist::Zilla::Plugin::InlineFilesMARCEL::VERSION = '1.102630';
+  $Dist::Zilla::Plugin::InlineFilesMARCEL::VERSION = '1.102640';
 }
 # ABSTRACT: Write static files that I always use
 use Moose;
@@ -31,7 +31,7 @@ Dist::Zilla::Plugin::InlineFilesMARCEL - Write static files that I always use
 
 =head1 VERSION
 
-version 1.102630
+version 1.102640
 
 =head1 SYNOPSIS
 

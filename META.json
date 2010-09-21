@@ -89,11 +89,11 @@
    "provides" : {
       "Dist::Zilla::Plugin::InlineFilesMARCEL" : {
          "file" : "lib/Dist/Zilla/Plugin/InlineFilesMARCEL.pm",
-         "version" : "1.102630"
+         "version" : "1.102640"
       },
       "Dist::Zilla::PluginBundle::MARCEL" : {
          "file" : "lib/Dist/Zilla/PluginBundle/MARCEL.pm",
-         "version" : "1.102630"
+         "version" : "1.102640"
       }
    },
    "release_status" : "stable",
@@ -107,6 +107,6 @@
          "url" : "http://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL"
       }
    },
-   "version" : "1.102630"
+   "version" : "1.102640"
 }
 

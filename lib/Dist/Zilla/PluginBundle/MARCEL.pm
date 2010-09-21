@@ -4,7 +4,7 @@ use warnings;
 
 package Dist::Zilla::PluginBundle::MARCEL;
 BEGIN {
-  $Dist::Zilla::PluginBundle::MARCEL::VERSION = '1.102630';
+  $Dist::Zilla::PluginBundle::MARCEL::VERSION = '1.102640';
 }
 
 # ABSTRACT: Build and release a distribution like MARCEL
@@ -60,6 +60,8 @@ use Dist::Zilla::PluginBundle::Git;
 use Pod::Weaver::PluginBundle::MARCEL;
 with 'Dist::Zilla::Role::PluginBundle';
 
+sub mvp_multivalue_args { qw(weaver_finder) }
+
 sub bundle_config {
     my ($self, $section) = @_;
     # my $class = ref($self) || $self;
@@ -87,6 +89,11 @@ sub bundle_config {
 
     # params for pod weaver
     $arg->{weaver} ||= 'pod';
+
+    my $pod_weaver_params = { config_plugin => '@MARCEL' };
+    if (defined $arg->{weaver_finder}) {
+        $pod_weaver_params->{finder} = $arg->{weaver_finder}
+    }
 
     # long list of plugins
     my @wanted = (
@@ -139,7 +146,7 @@ sub bundle_config {
 
         (   $arg->{weaver} eq 'task'
             ? [ 'TaskWeaver' => {} ]
-            : [ 'PodWeaver' => { config_plugin => '@MARCEL' } ]
+            : [ 'PodWeaver'  => $pod_weaver_params ]
         ),
 
         # -- dynamic meta-information
@@ -201,7 +208,7 @@ Dist::Zilla::PluginBundle::MARCEL - Build and release a distribution like MARCEL
 
 =head1 VERSION
 
-version 1.102630
+version 1.102640
 
 =head1 SYNOPSIS
 
@@ -291,6 +298,9 @@ L<AutoVersion|Dist::Zilla::Plugin::AutoVersion> plugin. Default to 1.
 respectively either L<PodWeaver|Dist::Zilla::Plugin::PodWeaver> or
 L<TaskWeaver|Dist::Zilla::Plugin::TaskWeaver>.
 
+=item * C<weaver_finder> - a multi-value argument that overrides the default
+file finders used by <PodWeaver|Dist::Zilla::Plugin::PodWeaver>.
+
 =item * C<skip_prereq> - passed as C<skip> option to the
 L<AutoPrereq|Dist::Zilla::Plugin::AutoPrereq> plugin if set. No default.
 
@@ -301,6 +311,10 @@ to fake home.
 =back
 
 =head1 FUNCTIONS
+
+=head2 mvp_multivalue_args
+
+Defines that C<weaver_finder> is a multi-value argument.
 
 =head2 bundle_config
 
