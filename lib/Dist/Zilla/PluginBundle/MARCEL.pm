@@ -4,7 +4,7 @@ use warnings;
 
 package Dist::Zilla::PluginBundle::MARCEL;
 BEGIN {
-  $Dist::Zilla::PluginBundle::MARCEL::VERSION = '1.102640';
+  $Dist::Zilla::PluginBundle::MARCEL::VERSION = '1.103490';
 }
 
 # ABSTRACT: Build and release a distribution like MARCEL
@@ -19,8 +19,10 @@ use Dist::Zilla::Plugin::Bugtracker;
 use Dist::Zilla::Plugin::CheckChangeLog;
 use Dist::Zilla::Plugin::CheckChangesTests;
 use Dist::Zilla::Plugin::CompileTests 1.100220;
+use Dist::Zilla::Plugin::CopyReadmeFromBuild;
 use Dist::Zilla::Plugin::CriticTests;
 use Dist::Zilla::Plugin::DistManifestTests;
+use Dist::Zilla::Plugin::EOLTests;
 use Dist::Zilla::Plugin::ExtraTests;
 use Dist::Zilla::Plugin::GatherDir;
 use Dist::Zilla::Plugin::HasVersionTests;
@@ -59,11 +61,11 @@ use Dist::Zilla::Plugin::UploadToCPAN;
 use Dist::Zilla::PluginBundle::Git;
 use Pod::Weaver::PluginBundle::MARCEL;
 with 'Dist::Zilla::Role::PluginBundle';
-
 sub mvp_multivalue_args { qw(weaver_finder) }
 
 sub bundle_config {
     my ($self, $section) = @_;
+
     # my $class = ref($self) || $self;
     my $arg = $section->{payload};
 
@@ -89,10 +91,9 @@ sub bundle_config {
 
     # params for pod weaver
     $arg->{weaver} ||= 'pod';
-
     my $pod_weaver_params = { config_plugin => '@MARCEL' };
     if (defined $arg->{weaver_finder}) {
-        $pod_weaver_params->{finder} = $arg->{weaver_finder}
+        $pod_weaver_params->{finder} = $arg->{weaver_finder};
     }
 
     # long list of plugins
@@ -123,12 +124,13 @@ sub bundle_config {
         [ DistManifestTests   => {} ],
         [ UnusedVarsTests     => {} ],
         [ NoTabsTests         => {} ],
+        [ EOLTests            => {} ],
         [ InlineFilesMARCEL   => {} ],
         [ ReportVersions      => {} ],
 
         # -- remove some files
         [ PruneCruft   => {} ],
-        [ PruneFiles   => { filenames => [ qw(dist.ini) ] } ],
+        [ PruneFiles   => { filenames => [qw(dist.ini)] } ],
         [ ManifestSkip => {} ],
 
         # -- get prereqs
@@ -140,13 +142,13 @@ sub bundle_config {
         [ Homepage   => {} ],
 
         # -- munge files
-        [ ExtraTests  => {} ],
-        [ NextRelease => {} ],
-        [ PkgVersion  => {} ],
-
+        [ ExtraTests          => {} ],
+        [ NextRelease         => {} ],
+        [ PkgVersion          => {} ],
+        [ CopyReadmeFromBuild => {} ],
         (   $arg->{weaver} eq 'task'
             ? [ 'TaskWeaver' => {} ]
-            : [ 'PodWeaver'  => $pod_weaver_params ]
+            : [ 'PodWeaver' => $pod_weaver_params ]
         ),
 
         # -- dynamic meta-information
@@ -167,7 +169,7 @@ sub bundle_config {
         [ CheckChangeLog => {} ],
 
         #[ @Git],
-        [ UploadToCPAN  => {} ],
+        [ UploadToCPAN => {} ],
     );
 
     # create list of plugins
@@ -186,7 +188,6 @@ sub bundle_config {
         }
     );
     push @plugins, @gitplugins;
-
     return @plugins;
 }
 __PACKAGE__->meta->make_immutable;
@@ -208,7 +209,7 @@ Dist::Zilla::PluginBundle::MARCEL - Build and release a distribution like MARCEL
 
 =head1 VERSION
 
-version 1.102640
+version 1.103490
 
 =head1 SYNOPSIS
 
@@ -243,6 +244,7 @@ equivalent to:
     [DistManifestTests]
     [UnusedVarsTests]
     [NoTabsTests]
+    [EOLTests]
     [InlineFilesMARCEL]
     [ReportVersions]
 
@@ -265,6 +267,7 @@ equivalent to:
     [ExtraTests]
     [NextRelease]
     [PkgVersion]
+    [CopyReadmeFromBuild]
     [PodWeaver]
     config_plugin = '@MARCEL'
 
@@ -299,7 +302,7 @@ respectively either L<PodWeaver|Dist::Zilla::Plugin::PodWeaver> or
 L<TaskWeaver|Dist::Zilla::Plugin::TaskWeaver>.
 
 =item * C<weaver_finder> - a multi-value argument that overrides the default
-file finders used by <PodWeaver|Dist::Zilla::Plugin::PodWeaver>.
+file finders used by L<PodWeaver|Dist::Zilla::Plugin::PodWeaver>.
 
 =item * C<skip_prereq> - passed as C<skip> option to the
 L<AutoPrereq|Dist::Zilla::Plugin::AutoPrereq> plugin if set. No default.
@@ -310,7 +313,7 @@ to fake home.
 
 =back
 
-=head1 FUNCTIONS
+=head1 METHODS
 
 =head2 mvp_multivalue_args
 
@@ -330,7 +333,7 @@ See perlmodinstall for information and options on installing Perl modules.
 No bugs have been reported.
 
 Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org>.
+L<http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-MARCEL>.
 
 =head1 AVAILABILITY
 
@@ -338,8 +341,8 @@ The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
 site near you, or see L<http://search.cpan.org/dist/Dist-Zilla-PluginBundle-MARCEL/>.
 
-The development version lives at L<http://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL>
-and may be cloned from L<git://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL>.
+The development version lives at L<http://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL.git>
+and may be cloned from L<git://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL.git>.
 Instead of sending patches, please fork this project using the standard
 git and github infrastructure.
 

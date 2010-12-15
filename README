@@ -3,7 +3,7 @@ NAME
     like MARCEL
 
 VERSION
-    version 1.102640
+    version 1.103490
 
 SYNOPSIS
     In your dist.ini:
@@ -36,6 +36,7 @@ DESCRIPTION
         [DistManifestTests]
         [UnusedVarsTests]
         [NoTabsTests]
+        [EOLTests]
         [InlineFilesMARCEL]
         [ReportVersions]
 
@@ -58,6 +59,7 @@ DESCRIPTION
         [ExtraTests]
         [NextRelease]
         [PkgVersion]
+        [CopyReadmeFromBuild]
         [PodWeaver]
         config_plugin = '@MARCEL'
 
@@ -89,7 +91,7 @@ DESCRIPTION
         respectively either PodWeaver or TaskWeaver.
 
     *   "weaver_finder" - a multi-value argument that overrides the default
-        file finders used by <PodWeaver|Dist::Zilla::Plugin::PodWeaver>.
+        file finders used by PodWeaver.
 
     *   "skip_prereq" - passed as "skip" option to the AutoPrereq plugin if
         set. No default.
@@ -97,7 +99,7 @@ DESCRIPTION
     *   "fake_home" - passed to CompileTests to control whether to fake
         home.
 
-FUNCTIONS
+METHODS
   mvp_multivalue_args
     Defines that "weaver_finder" is a multi-value argument.
 
@@ -113,7 +115,8 @@ BUGS AND LIMITATIONS
     No bugs have been reported.
 
     Please report any bugs or feature requests through the web interface at
-    <http://rt.cpan.org>.
+    <http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundl
+    e-MARCEL>.
 
 AVAILABILITY
     The latest version of this module is available from the Comprehensive
@@ -122,10 +125,11 @@ AVAILABILITY
     <http://search.cpan.org/dist/Dist-Zilla-PluginBundle-MARCEL/>.
 
     The development version lives at
-    <http://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL> and may be
-    cloned from <git://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL>.
-    Instead of sending patches, please fork this project using the standard
-    git and github infrastructure.
+    <http://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL.git> and may
+    be cloned from
+    <git://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL.git>. Instead
+    of sending patches, please fork this project using the standard git and
+    github infrastructure.
 
 AUTHORS
     *   Marcel Gruenauer <marcel@cpan.org>

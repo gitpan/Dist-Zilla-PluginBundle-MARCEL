@@ -13,7 +13,7 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: 6.31
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.102341, CPAN::Meta::Converter version 2.102400'
+generated_by: 'Dist::Zilla version 4.200000, CPAN::Meta::Converter version 2.102400'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -22,10 +22,10 @@ name: Dist-Zilla-PluginBundle-MARCEL
 provides:
   Dist::Zilla::Plugin::InlineFilesMARCEL:
     file: lib/Dist/Zilla/Plugin/InlineFilesMARCEL.pm
-    version: 1.102640
+    version: 1.103490
   Dist::Zilla::PluginBundle::MARCEL:
     file: lib/Dist/Zilla/PluginBundle/MARCEL.pm
-    version: 1.102640
+    version: 1.103490
 requires:
   Class::MOP: 0
   Dist::Zilla::Plugin::AutoPrereqs: 0
@@ -34,8 +34,10 @@ requires:
   Dist::Zilla::Plugin::CheckChangeLog: 0
   Dist::Zilla::Plugin::CheckChangesTests: 0
   Dist::Zilla::Plugin::CompileTests: 1.100220
+  Dist::Zilla::Plugin::CopyReadmeFromBuild: 0
   Dist::Zilla::Plugin::CriticTests: 0
   Dist::Zilla::Plugin::DistManifestTests: 0
+  Dist::Zilla::Plugin::EOLTests: 0
   Dist::Zilla::Plugin::ExecDir: 0
   Dist::Zilla::Plugin::ExtraTests: 0
   Dist::Zilla::Plugin::GatherDir: 0
@@ -81,5 +83,5 @@ requires:
 resources:
   bugtracker: http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-MARCEL
   homepage: http://search.cpan.org/dist/Dist-Zilla-PluginBundle-MARCEL/
-  repository: http://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL
-version: 1.102640
+  repository: git://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL.git
+version: 1.103490

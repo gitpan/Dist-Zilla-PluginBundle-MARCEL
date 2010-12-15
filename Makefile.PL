@@ -34,8 +34,10 @@ my %WriteMakefileArgs = (
     'Dist::Zilla::Plugin::CheckChangeLog' => '0',
     'Dist::Zilla::Plugin::CheckChangesTests' => '0',
     'Dist::Zilla::Plugin::CompileTests' => '1.100220',
+    'Dist::Zilla::Plugin::CopyReadmeFromBuild' => '0',
     'Dist::Zilla::Plugin::CriticTests' => '0',
     'Dist::Zilla::Plugin::DistManifestTests' => '0',
+    'Dist::Zilla::Plugin::EOLTests' => '0',
     'Dist::Zilla::Plugin::ExecDir' => '0',
     'Dist::Zilla::Plugin::ExtraTests' => '0',
     'Dist::Zilla::Plugin::GatherDir' => '0',
@@ -78,7 +80,7 @@ my %WriteMakefileArgs = (
     'Pod::Weaver::PluginBundle::MARCEL' => '0',
     'Test::Synopsis' => '0'
   },
-  'VERSION' => '1.102640',
+  'VERSION' => '1.103490',
   'test' => {
     'TESTS' => 't/*.t'
   }
