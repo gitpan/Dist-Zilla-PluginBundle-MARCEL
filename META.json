@@ -5,7 +5,7 @@
       "Jerome Quelin <jquelin@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.200000, CPAN::Meta::Converter version 2.102400",
+   "generated_by" : "Dist::Zilla version 4.200008, CPAN::Meta::Converter version 2.110930",
    "license" : [
       "perl_5"
    ],
@@ -17,7 +17,7 @@
    "prereqs" : {
       "configure" : {
          "requires" : {
-            "ExtUtils::MakeMaker" : "6.31"
+            "ExtUtils::MakeMaker" : "6.30"
          }
       },
       "runtime" : {
@@ -91,11 +91,11 @@
    "provides" : {
       "Dist::Zilla::Plugin::InlineFilesMARCEL" : {
          "file" : "lib/Dist/Zilla/Plugin/InlineFilesMARCEL.pm",
-         "version" : "1.103490"
+         "version" : "1.111750"
       },
       "Dist::Zilla::PluginBundle::MARCEL" : {
          "file" : "lib/Dist/Zilla/PluginBundle/MARCEL.pm",
-         "version" : "1.103490"
+         "version" : "1.111750"
       }
    },
    "release_status" : "stable",
@@ -111,6 +111,6 @@
          "web" : "http://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL"
       }
    },
-   "version" : "1.103490"
+   "version" : "1.111750"
 }
 

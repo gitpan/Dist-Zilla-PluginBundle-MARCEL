@@ -11,9 +11,9 @@ build_requires:
   Scalar::Util: 0
   Test::More: 0.94
 configure_requires:
-  ExtUtils::MakeMaker: 6.31
+  ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.200000, CPAN::Meta::Converter version 2.102400'
+generated_by: 'Dist::Zilla version 4.200008, CPAN::Meta::Converter version 2.110930'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -22,10 +22,10 @@ name: Dist-Zilla-PluginBundle-MARCEL
 provides:
   Dist::Zilla::Plugin::InlineFilesMARCEL:
     file: lib/Dist/Zilla/Plugin/InlineFilesMARCEL.pm
-    version: 1.103490
+    version: 1.111750
   Dist::Zilla::PluginBundle::MARCEL:
     file: lib/Dist/Zilla/PluginBundle/MARCEL.pm
-    version: 1.103490
+    version: 1.111750
 requires:
   Class::MOP: 0
   Dist::Zilla::Plugin::AutoPrereqs: 0
@@ -84,4 +84,4 @@ resources:
   bugtracker: http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-MARCEL
   homepage: http://search.cpan.org/dist/Dist-Zilla-PluginBundle-MARCEL/
   repository: git://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL.git
-version: 1.103490
+version: 1.111750

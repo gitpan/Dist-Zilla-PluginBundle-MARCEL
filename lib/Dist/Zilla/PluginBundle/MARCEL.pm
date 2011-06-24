@@ -4,7 +4,7 @@ use warnings;
 
 package Dist::Zilla::PluginBundle::MARCEL;
 BEGIN {
-  $Dist::Zilla::PluginBundle::MARCEL::VERSION = '1.103490';
+  $Dist::Zilla::PluginBundle::MARCEL::VERSION = '1.111750';
 }
 
 # ABSTRACT: Build and release a distribution like MARCEL
@@ -209,7 +209,7 @@ Dist::Zilla::PluginBundle::MARCEL - Build and release a distribution like MARCEL
 
 =head1 VERSION
 
-version 1.103490
+version 1.111750
 
 =head1 SYNOPSIS
 
@@ -341,7 +341,7 @@ The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
 site near you, or see L<http://search.cpan.org/dist/Dist-Zilla-PluginBundle-MARCEL/>.
 
-The development version lives at L<http://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL.git>
+The development version lives at L<http://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL>
 and may be cloned from L<git://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL.git>.
 Instead of sending patches, please fork this project using the standard
 git and github infrastructure.
