@@ -3,8 +3,8 @@ use strict;
 use warnings;
 
 package Dist::Zilla::Plugin::InlineFilesMARCEL;
-BEGIN {
-  $Dist::Zilla::Plugin::InlineFilesMARCEL::VERSION = '1.111750';
+{
+  $Dist::Zilla::Plugin::InlineFilesMARCEL::VERSION = '1.120860';
 }
 # ABSTRACT: Write static files that I always use
 use Moose;
@@ -31,7 +31,7 @@ Dist::Zilla::Plugin::InlineFilesMARCEL - Write static files that I always use
 
 =head1 VERSION
 
-version 1.111750
+version 1.120860
 
 =head1 SYNOPSIS
 
@@ -56,21 +56,16 @@ See perlmodinstall for information and options on installing Perl modules.
 
 =head1 BUGS AND LIMITATIONS
 
-No bugs have been reported.
-
-Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-MARCEL>.
+You can make new bug reports, and view existing ones, through the
+web interface at L<http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-MARCEL>.
 
 =head1 AVAILABILITY
 
+The project homepage is L<http://search.cpan.org/dist/Dist-Zilla-PluginBundle-MARCEL/>.
+
 The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
-site near you, or see L<http://search.cpan.org/dist/Dist-Zilla-PluginBundle-MARCEL/>.
-
-The development version lives at L<http://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL>
-and may be cloned from L<git://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL.git>.
-Instead of sending patches, please fork this project using the standard
-git and github infrastructure.
+site near you, or see L<https://metacpan.org/module/Dist::Zilla::PluginBundle::MARCEL/>.
 
 =head1 AUTHORS
 
@@ -84,11 +79,15 @@ Marcel Gruenauer <marcel@cpan.org>
 
 Jerome Quelin <jquelin@cpan.org>
 
+=item *
+
+Olivier Mengue <dolmen@cpan.org>
+
 =back
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by Marcel Gruenauer.
+This software is copyright (c) 2012 by Olivier Mengué.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
@@ -121,6 +120,7 @@ ___[ MANIFEST.SKIP ]___
 
 # Makemaker/Build.PL generated files and dirs.
 MYMETA.yml
+MYMETA.json
 MANIFEST.old
 ^Makefile$
 ^Build$

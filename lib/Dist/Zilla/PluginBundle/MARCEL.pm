@@ -3,8 +3,8 @@ use strict;
 use warnings;
 
 package Dist::Zilla::PluginBundle::MARCEL;
-BEGIN {
-  $Dist::Zilla::PluginBundle::MARCEL::VERSION = '1.111750';
+{
+  $Dist::Zilla::PluginBundle::MARCEL::VERSION = '1.120860';
 }
 
 # ABSTRACT: Build and release a distribution like MARCEL
@@ -17,46 +17,46 @@ use Dist::Zilla::Plugin::AutoPrereqs;
 use Dist::Zilla::Plugin::AutoVersion;
 use Dist::Zilla::Plugin::Bugtracker;
 use Dist::Zilla::Plugin::CheckChangeLog;
-use Dist::Zilla::Plugin::CheckChangesTests;
-use Dist::Zilla::Plugin::CompileTests 1.100220;
 use Dist::Zilla::Plugin::CopyReadmeFromBuild;
-use Dist::Zilla::Plugin::CriticTests;
-use Dist::Zilla::Plugin::DistManifestTests;
-use Dist::Zilla::Plugin::EOLTests;
+use Dist::Zilla::Plugin::ExecDir;
 use Dist::Zilla::Plugin::ExtraTests;
 use Dist::Zilla::Plugin::GatherDir;
 use Dist::Zilla::Plugin::HasVersionTests;
 use Dist::Zilla::Plugin::Homepage;
-use Dist::Zilla::Plugin::ExecDir;
-use Dist::Zilla::Plugin::InstallGuide;
 use Dist::Zilla::Plugin::InlineFilesMARCEL;
-use Dist::Zilla::Plugin::KwaliteeTests;
+use Dist::Zilla::Plugin::InstallGuide;
 use Dist::Zilla::Plugin::License;
+use Dist::Zilla::Plugin::MakeMaker;
 use Dist::Zilla::Plugin::Manifest;
 use Dist::Zilla::Plugin::ManifestSkip;
-use Dist::Zilla::Plugin::MetaProvides::Package;
-use Dist::Zilla::Plugin::MetaYAML;
 use Dist::Zilla::Plugin::MetaJSON;
+use Dist::Zilla::Plugin::MetaProvides::Package;
 use Dist::Zilla::Plugin::MetaTests;
-use Dist::Zilla::Plugin::MakeMaker;
-use Dist::Zilla::Plugin::MinimumVersionTests;
+use Dist::Zilla::Plugin::MetaYAML;
 use Dist::Zilla::Plugin::NextRelease;
 use Dist::Zilla::Plugin::NoTabsTests;
 use Dist::Zilla::Plugin::PkgVersion;
 use Dist::Zilla::Plugin::PodCoverageTests;
 use Dist::Zilla::Plugin::PodSyntaxTests;
-use Dist::Zilla::Plugin::PodSpellingTests;
 use Dist::Zilla::Plugin::PodWeaver;
-use Dist::Zilla::Plugin::PortabilityTests;
 use Dist::Zilla::Plugin::PruneCruft;
 use Dist::Zilla::Plugin::PruneFiles;
 use Dist::Zilla::Plugin::ReadmeFromPod;
 use Dist::Zilla::Plugin::ReportVersions;
 use Dist::Zilla::Plugin::Repository;
 use Dist::Zilla::Plugin::ShareDir;
-use Dist::Zilla::Plugin::SynopsisTests;
 use Dist::Zilla::Plugin::TaskWeaver;
-use Dist::Zilla::Plugin::UnusedVarsTests;
+use Dist::Zilla::Plugin::Test::CheckChanges;
+use Dist::Zilla::Plugin::Test::Compile 1.100220;
+use Dist::Zilla::Plugin::Test::DistManifest;
+use Dist::Zilla::Plugin::Test::EOL;
+use Dist::Zilla::Plugin::Test::Kwalitee;
+use Dist::Zilla::Plugin::Test::MinimumVersion;
+use Dist::Zilla::Plugin::Test::Perl::Critic;
+use Dist::Zilla::Plugin::Test::PodSpelling;
+use Dist::Zilla::Plugin::Test::Portability;
+use Dist::Zilla::Plugin::Test::Synopsis;
+use Dist::Zilla::Plugin::Test::UnusedVars;
 use Dist::Zilla::Plugin::UploadToCPAN;
 use Dist::Zilla::PluginBundle::Git;
 use Pod::Weaver::PluginBundle::MARCEL;
@@ -108,25 +108,25 @@ sub bundle_config {
         ],
 
         # -- fetch & generate files
-        [ GatherDir           => {} ],
-        [ CompileTests        => $compile_params ],
-        [ CriticTests         => {} ],
-        [ MetaTests           => {} ],
-        [ PodCoverageTests    => {} ],
-        [ PodSyntaxTests      => {} ],
-        [ PodSpellingTests    => {} ],
-        [ KwaliteeTests       => {} ],
-        [ PortabilityTests    => {} ],
-        [ SynopsisTests       => {} ],
-        [ MinimumVersionTests => {} ],
-        [ HasVersionTests     => {} ],
-        [ CheckChangesTests   => {} ],
-        [ DistManifestTests   => {} ],
-        [ UnusedVarsTests     => {} ],
-        [ NoTabsTests         => {} ],
-        [ EOLTests            => {} ],
-        [ InlineFilesMARCEL   => {} ],
-        [ ReportVersions      => {} ],
+        [ GatherDir              => {} ],
+        [ 'Test::Compile'        => $compile_params ],
+        [ 'Test::Perl::Critic'   => {} ],
+        [ MetaTests              => {} ],
+        [ PodCoverageTests       => {} ],
+        [ PodSyntaxTests         => {} ],
+        [ 'Test::PodSpelling'    => {} ],
+        [ 'Test::Kwalitee'       => {} ],
+        [ 'Test::Portability'    => {} ],
+        [ 'Test::Synopsis'       => {} ],
+        [ 'Test::MinimumVersion' => {} ],
+        [ HasVersionTests        => {} ],
+        [ 'Test::CheckChanges'   => {} ],
+        [ 'Test::DistManifest'   => {} ],
+        [ 'Test::UnusedVars'     => {} ],
+        [ NoTabsTests            => {} ],
+        [ 'Test::EOL'            => {} ],
+        [ InlineFilesMARCEL      => {} ],
+        [ ReportVersions         => {} ],
 
         # -- remove some files
         [ PruneCruft   => {} ],
@@ -201,7 +201,7 @@ __END__
 =for test_synopsis 1;
 __END__
 
-=for stopwords AutoPrereq AutoVersion CompileTests PodWeaver TaskWeaver Quelin
+=for stopwords AutoPrereq AutoVersion Test::Compile PodWeaver TaskWeaver Quelin
 
 =head1 NAME
 
@@ -209,7 +209,7 @@ Dist::Zilla::PluginBundle::MARCEL - Build and release a distribution like MARCEL
 
 =head1 VERSION
 
-version 1.111750
+version 1.120860
 
 =head1 SYNOPSIS
 
@@ -229,22 +229,22 @@ equivalent to:
 
     ; -- fetch & generate files
     [GatherDir]
-    [CompileTests]
-    [CriticTests]
+    [Test::Compile]
+    [Test::Perl::Critic]
     [MetaTests]
     [PodCoverageTests]
     [PodSyntaxTests]
-    [PodSpellingTests]
-    [KwaliteeTests]
-    [PortabilityTests]
-    [SynopsisTests]
-    [MinimumVersionTests]
+    [Test::PodSpelling]
+    [Test::Kwalitee]
+    [Test::Portability]
+    [Test::Synopsis]
+    [Test::MinimumVersion]
     [HasVersionTests]
-    [CheckChangesTests]
-    [DistManifestTests]
-    [UnusedVarsTests]
+    [Test::CheckChanges]
+    [Test::DistManifest]
+    [Test::UnusedVars]
     [NoTabsTests]
-    [EOLTests]
+    [Test::EOL]
     [InlineFilesMARCEL]
     [ReportVersions]
 
@@ -308,7 +308,7 @@ file finders used by L<PodWeaver|Dist::Zilla::Plugin::PodWeaver>.
 L<AutoPrereq|Dist::Zilla::Plugin::AutoPrereq> plugin if set. No default.
 
 =item * C<fake_home> - passed to
-L<CompileTests|Dist::Zilla::Plugin::CompileTests> to control whether
+L<Test::Compile|Dist::Zilla::Plugin::Test::Compile> to control whether
 to fake home.
 
 =back
@@ -330,21 +330,16 @@ See perlmodinstall for information and options on installing Perl modules.
 
 =head1 BUGS AND LIMITATIONS
 
-No bugs have been reported.
-
-Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-MARCEL>.
+You can make new bug reports, and view existing ones, through the
+web interface at L<http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-MARCEL>.
 
 =head1 AVAILABILITY
 
+The project homepage is L<http://search.cpan.org/dist/Dist-Zilla-PluginBundle-MARCEL/>.
+
 The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
-site near you, or see L<http://search.cpan.org/dist/Dist-Zilla-PluginBundle-MARCEL/>.
-
-The development version lives at L<http://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL>
-and may be cloned from L<git://github.com/hanekomu/Dist-Zilla-PluginBundle-MARCEL.git>.
-Instead of sending patches, please fork this project using the standard
-git and github infrastructure.
+site near you, or see L<https://metacpan.org/module/Dist::Zilla::PluginBundle::MARCEL/>.
 
 =head1 AUTHORS
 
@@ -358,11 +353,15 @@ Marcel Gruenauer <marcel@cpan.org>
 
 Jerome Quelin <jquelin@cpan.org>
 
+=item *
+
+Olivier Mengue <dolmen@cpan.org>
+
 =back
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by Marcel Gruenauer.
+This software is copyright (c) 2012 by Olivier Mengué.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
