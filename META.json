@@ -6,7 +6,7 @@
       "Olivier Mengue <dolmen@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.300010, CPAN::Meta::Converter version 2.120630",
+   "generated_by" : "Dist::Zilla version 4.300016, CPAN::Meta::Converter version 2.120921",
    "license" : [
       "perl_5"
    ],
@@ -83,23 +83,21 @@
       "test" : {
          "requires" : {
             "Carp" : "0",
-            "English" : "0",
             "File::Find" : "0",
             "File::Temp" : "0",
             "Scalar::Util" : "0",
-            "Test::More" : "0.94",
-            "Test::Requires" : "0"
+            "Test::More" : "0.94"
          }
       }
    },
    "provides" : {
       "Dist::Zilla::Plugin::InlineFilesMARCEL" : {
          "file" : "lib/Dist/Zilla/Plugin/InlineFilesMARCEL.pm",
-         "version" : "1.120860"
+         "version" : "1.121330"
       },
       "Dist::Zilla::PluginBundle::MARCEL" : {
          "file" : "lib/Dist/Zilla/PluginBundle/MARCEL.pm",
-         "version" : "1.120860"
+         "version" : "1.121330"
       }
    },
    "release_status" : "stable",
@@ -109,8 +107,12 @@
          "web" : "http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-MARCEL"
       },
       "homepage" : "http://search.cpan.org/dist/Dist-Zilla-PluginBundle-MARCEL/",
-      "repository" : {}
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/dolmen/p5-Dist-Zilla-PluginBundle-MARCEL.git",
+         "web" : "http://github.com/dolmen/p5-Dist-Zilla-PluginBundle-MARCEL"
+      }
    },
-   "version" : "1.120860"
+   "version" : "1.121330"
 }
 

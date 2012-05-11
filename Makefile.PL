@@ -13,12 +13,10 @@ my %WriteMakefileArgs = (
   "AUTHOR" => "Marcel Gruenauer <marcel\@cpan.org>, Jerome Quelin <jquelin\@cpan.org>, Olivier Mengue <dolmen\@cpan.org>",
   "BUILD_REQUIRES" => {
     "Carp" => 0,
-    "English" => 0,
     "File::Find" => 0,
     "File::Temp" => 0,
     "Scalar::Util" => 0,
-    "Test::More" => "0.94",
-    "Test::Requires" => 0
+    "Test::More" => "0.94"
   },
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => "6.30"
@@ -83,7 +81,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "1.120860",
+  "VERSION" => "1.121330",
   "test" => {
     "TESTS" => "t/*.t"
   }

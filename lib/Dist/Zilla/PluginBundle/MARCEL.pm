@@ -4,7 +4,7 @@ use warnings;
 
 package Dist::Zilla::PluginBundle::MARCEL;
 {
-  $Dist::Zilla::PluginBundle::MARCEL::VERSION = '1.120860';
+  $Dist::Zilla::PluginBundle::MARCEL::VERSION = '1.121330';
 }
 
 # ABSTRACT: Build and release a distribution like MARCEL
@@ -201,7 +201,7 @@ __END__
 =for test_synopsis 1;
 __END__
 
-=for stopwords AutoPrereq AutoVersion Test::Compile PodWeaver TaskWeaver Quelin
+=for stopwords AutoPrereq AutoVersion Test::Compile PodWeaver TaskWeaver Quelin Mengu Mengué
 
 =head1 NAME
 
@@ -209,7 +209,7 @@ Dist::Zilla::PluginBundle::MARCEL - Build and release a distribution like MARCEL
 
 =head1 VERSION
 
-version 1.120860
+version 1.121330
 
 =head1 SYNOPSIS
 
@@ -361,7 +361,7 @@ Olivier Mengue <dolmen@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Olivier Mengu�.
+This software is copyright (c) 2012 by Olivier Mengué.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

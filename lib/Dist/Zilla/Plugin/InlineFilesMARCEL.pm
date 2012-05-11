@@ -4,7 +4,7 @@ use warnings;
 
 package Dist::Zilla::Plugin::InlineFilesMARCEL;
 {
-  $Dist::Zilla::Plugin::InlineFilesMARCEL::VERSION = '1.120860';
+  $Dist::Zilla::Plugin::InlineFilesMARCEL::VERSION = '1.121330';
 }
 # ABSTRACT: Write static files that I always use
 use Moose;
@@ -23,7 +23,7 @@ no Moose;
 =for test_synopsis 1;
 __END__
 
-=for stopwords Quelin
+=for stopwords Quelin Mengu Mengué
 
 =head1 NAME
 
@@ -31,7 +31,7 @@ Dist::Zilla::Plugin::InlineFilesMARCEL - Write static files that I always use
 
 =head1 VERSION
 
-version 1.120860
+version 1.121330
 
 =head1 SYNOPSIS
 
@@ -87,7 +87,7 @@ Olivier Mengue <dolmen@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Olivier Mengu�.
+This software is copyright (c) 2012 by Olivier Mengué.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
